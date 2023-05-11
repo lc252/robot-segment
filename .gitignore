@@ -168,4 +168,7 @@ cython_debug/
 # yolo
 datasets/
 runs/
+*.pt
 
+catkin_ws/build
+catkin_ws/devel

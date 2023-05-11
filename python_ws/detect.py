@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # Load a model
-model = YOLO(r"C:\Users\lachl\Documents\python\test_ws\runs\segment\train5\weights\last.pt")  # load a pretrained model (recommended for training)
+model = YOLO("yolov8n.pt")  # load a pretrained model (recommended for training)
 
 # Use the model
 cap = cv2.VideoCapture(0)
