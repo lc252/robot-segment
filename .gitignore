@@ -168,4 +168,7 @@ cython_debug/
 # yolo
 datasets/
 runs/
-
+datasets_raw/
+background_images/
+*.pt 
+*.engine
