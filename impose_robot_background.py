@@ -33,6 +33,7 @@ def impose_rob(rob_path, background_path):
     #render
     print("datasets"+str(rob_path)[12:])
     plt.imsave("datasets"+str(rob_path)[12:], im_arr)
+    # plt.imshow(im_arr)
     # plt.show()
 
 if __name__ == "__main__":

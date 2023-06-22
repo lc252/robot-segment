@@ -1,0 +1,5 @@
+train: /home/fif/lc252/robot-segment/datasets/train/images
+val: /home/fif/lc252/robot-segment/datasets/val/images
+test: /home/fif/lc252/robot-segment/datasets/test/images
+
+names: ['ABB_IRB1200']

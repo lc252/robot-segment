@@ -166,6 +166,7 @@ cython_debug/
 .vs/*
 
 # yolo
-datasets/
 runs/
-
+*.pt 
+*.engine
+data*/
