@@ -64,9 +64,9 @@ def create_label(rob_mask, label_path : Path):
 
 if __name__ == "__main__":
 
-    PATH = "/home/lachl/images"
+    PATH = "/home/fif/lc252/robot-segment"
     
-    background_dir = list(Path(f"{PATH}/background_images").iterdir())
+    background_dir = list(Path(f"{PATH}/datasets_backgrounds").iterdir())
 
     # iterate each image in train, val, test sets
     for sets in ['train', 'val', 'test']:
