@@ -11,6 +11,7 @@ import cv2
 from cv_bridge import CvBridge
 import numpy as np
 import time
+import datetime
 
 
 
@@ -29,9 +30,9 @@ class camera_node():
         self.plan_srv = rospy.ServiceProxy("target_planner/plan_request", SetBool)
 
         split = {
-            "train" : 8,
-            "test" : 1,
-            "val" : 1
+            "train" : 150,
+            "test" : 18,
+            "val" : 18
         }
         for dset in split.keys():
             for i in range(split[dset]):
@@ -42,17 +43,20 @@ class camera_node():
         while success == False:
             success = self.call_planner_service()
 
-        z = 0.5
         roll = -np.pi/2
-        r = 1.2
         for theta in range(0,359,45):
+            # randomise capture
+            r = np.random.rand() + 0.5          # random from 0.5 - 1.5
+            z = np.random.rand()*0.5 + 0.75     # random from 0.24 - 0.75
+            
             yaw = theta*(np.pi/180)
             x = r*np.cos(yaw)
             y = r*np.sin(yaw)
-            q = transformations.quaternion_from_euler(roll, 0, yaw+np.pi/2)
+            q = transformations.quaternion_from_euler(roll, 0, yaw + np.pi/2)
             self.br.sendTransform((x,y,z), (q[0],q[1],q[2],q[3]), rospy.Time.now(), "camera1", "world")
-            time.sleep(1)
-            plt.imsave(f"/home/lachl/datasets/{dset}/images/image_{i}_{theta}.png", self.im_arr)
+            time.sleep(1.1)
+            tag = datetime.datetime.now().strftime("%d%M%S")
+            plt.imsave(f"/home/fif/lc252/robot-segment/datasets_mask/{dset}/images/image_{tag}.png", self.im_arr)
 
     def call_planner_service(self):
         resp = self.plan_srv(True)
