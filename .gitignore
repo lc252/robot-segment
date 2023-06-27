@@ -170,3 +170,7 @@ runs/
 *.pt 
 *.engine
 datasets*/
+
+# ROS
+devel/
+build/
